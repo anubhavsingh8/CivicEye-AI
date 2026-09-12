@@ -1,0 +1,42 @@
+[
+    {
+        "report_id": "CE-20260912112018",
+        "issue": "a pothole or damaged road",
+        "confidence": 87.84,
+        "priority": "High",
+        "latitude": 26.78867,
+        "longitude": 83.201162,
+        "status": "In Progress",
+        "date": "2026-09-12 11:20:18"
+    },
+    {
+        "report_id": "CE-20260912114416",
+        "issue": "garbage or waste on the road",
+        "confidence": 99.78,
+        "priority": "Medium",
+        "latitude": 26.78867,
+        "longitude": 83.201162,
+        "status": "In Progress",
+        "date": "2026-09-12 11:44:16"
+    },
+    {
+        "report_id": "CE-20260912115227",
+        "issue": "water leakage or water pipe damage",
+        "confidence": 99.86,
+        "priority": "High",
+        "latitude": 26.78867,
+        "longitude": 83.201162,
+        "status": "Submitted",
+        "date": "2026-09-12 11:52:27"
+    },
+    {
+        "report_id": "CE-20260912120910",
+        "issue": "water leakage or water pipe damage",
+        "confidence": 99.86,
+        "priority": "High",
+        "latitude": 26.78867,
+        "longitude": 83.201162,
+        "status": "Submitted",
+        "date": "2026-09-12 12:09:10"
+    }
+]

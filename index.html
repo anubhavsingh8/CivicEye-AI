@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CivicEye AI - Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="topbar">
+    <div>
+        <h1>CivicEye <span>AI</span></h1>
+        <p>Smart Civic Issue Management Dashboard</p>
+    </div>
+
+    <div class="header-actions">
+        <div class="live-indicator">
+            <span></span> LIVE
+        </div>
+
+        <button id="refreshBtn" class="refresh-btn">
+            ↻ Refresh
+        </button>
+    </div>
+</header>
+
+<main class="dashboard">
+
+    <!-- Loading -->
+    <div id="loading" class="loading">
+        <div class="spinner"></div>
+        <p>Loading reports...</p>
+    </div>
+
+    <!-- Error -->
+    <div id="errorBox" class="error-box hidden">
+        Unable to connect with CivicEye server.
+        <button onclick="loadReports()">Retry</button>
+    </div>
+
+    <!-- Stats -->
+    <section class="stats-grid">
+
+        <div class="stat-card">
+            <div class="stat-icon">📋</div>
+            <div>
+                <p>Total Reports</p>
+                <h2 id="totalReports">0</h2>
+                <small>All citizen reports</small>
+            </div>
+        </div>
+
+        <div class="stat-card high">
+            <div class="stat-icon">⚠</div>
+            <div>
+                <p>High Priority</p>
+                <h2 id="highPriority">0</h2>
+                <small>Needs urgent action</small>
+            </div>
+        </div>
+
+        <div class="stat-card medium">
+            <div class="stat-icon">●</div>
+            <div>
+                <p>Medium Priority</p>
+                <h2 id="mediumPriority">0</h2>
+                <small>Needs attention</small>
+            </div>
+        </div>
+
+        <div class="stat-card low">
+            <div class="stat-icon">✓</div>
+            <div>
+                <p>Low Priority</p>
+                <h2 id="lowPriority">0</h2>
+                <small>Low urgency</small>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- Analytics -->
+    <section class="analytics-grid">
+
+        <!-- Status -->
+        <div class="panel">
+            <div class="panel-header">
+                <div>
+                    <h3>Report Status</h3>
+                    <p>Current resolution progress</p>
+                </div>
+            </div>
+
+            <div class="status-bar">
+                <div id="submittedBar"></div>
+                <div id="progressBar"></div>
+                <div id="resolvedBar"></div>
+            </div>
+
+            <div class="status-list">
+
+                <div class="status-row">
+                    <span>
+                        <i class="dot submitted"></i>
+                        Submitted
+                    </span>
+                    <strong id="submittedCount">0</strong>
+                </div>
+
+                <div class="status-row">
+                    <span>
+                        <i class="dot progress"></i>
+                        In Progress
+                    </span>
+                    <strong id="progressCount">0</strong>
+                </div>
+
+                <div class="status-row">
+                    <span>
+                        <i class="dot resolved"></i>
+                        Resolved
+                    </span>
+                    <strong id="resolvedCount">0</strong>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Issue Distribution -->
+        <div class="panel">
+            <div class="panel-header">
+                <div>
+                    <h3>Issue Distribution</h3>
+                    <p>Detected civic problems</p>
+                </div>
+            </div>
+
+            <div class="issue-list">
+
+                <div class="issue-item">
+                    <div class="issue-top">
+                        <span>Pothole / Damaged Road</span>
+                        <strong id="potholeCount">0</strong>
+                    </div>
+                    <div class="progress-bg">
+                        <div id="potholeBar" class="progress-fill"></div>
+                    </div>
+                </div>
+
+                <div class="issue-item">
+                    <div class="issue-top">
+                        <span>Garbage / Waste</span>
+                        <strong id="garbageCount">0</strong>
+                    </div>
+                    <div class="progress-bg">
+                        <div id="garbageBar" class="progress-fill"></div>
+                    </div>
+                </div>
+
+                <div class="issue-item">
+                    <div class="issue-top">
+                        <span>Damaged Streetlight</span>
+                        <strong id="streetlightCount">0</strong>
+                    </div>
+                    <div class="progress-bg">
+                        <div id="streetlightBar" class="progress-fill"></div>
+                    </div>
+                </div>
+
+                <div class="issue-item">
+                    <div class="issue-top">
+                        <span>Water Leakage</span>
+                        <strong id="waterCount">0</strong>
+                    </div>
+                    <div class="progress-bg">
+                        <div id="waterBar" class="progress-fill"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- Reports -->
+    <section class="reports-panel">
+
+        <div class="reports-header">
+            <div>
+                <h3>Citizen Reports</h3>
+                <p>Manage and update reported civic issues</p>
+            </div>
+
+            <div class="last-updated">
+                Last updated:
+                <strong id="lastUpdated">--</strong>
+            </div>
+        </div>
+
+        <div id="emptyState" class="empty-state hidden">
+            <div>📭</div>
+            <h3>No Reports Yet</h3>
+            <p>Citizen reports will appear here after submission.</p>
+        </div>
+
+        <div class="table-wrapper">
+            <table id="reportsTable">
+
+                <thead>
+                    <tr>
+                        <th>Report ID</th>
+                        <th>Issue</th>
+                        <th>Priority</th>
+                        <th>Location</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+
+                <tbody id="reportsBody">
+                </tbody>
+
+            </table>
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+    <p>
+        CivicEye AI · Smart Civic Issue Management System
+    </p>
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

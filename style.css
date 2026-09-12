@@ -1,0 +1,560 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f8;
+    color: #172033;
+}
+
+
+/* ================= HEADER ================= */
+
+.topbar {
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 22px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topbar h1 {
+    font-size: 27px;
+    letter-spacing: -0.5px;
+}
+
+.topbar h1 span {
+    color: #2563eb;
+}
+
+.topbar p {
+    color: #697386;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.live-indicator {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #16a34a;
+}
+
+.live-indicator span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #16a34a;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .35;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.refresh-btn {
+    border: none;
+    background: #172033;
+    color: white;
+    padding: 10px 17px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.refresh-btn:hover {
+    opacity: .88;
+}
+
+
+/* ================= DASHBOARD ================= */
+
+.dashboard {
+    width: 90%;
+    max-width: 1450px;
+    margin: 30px auto;
+}
+
+
+/* ================= LOADING ================= */
+
+.loading {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 25px;
+    border: 1px solid #e5e7eb;
+}
+
+.spinner {
+    width: 28px;
+    height: 28px;
+    border: 3px solid #e5e7eb;
+    border-top-color: #2563eb;
+    border-radius: 50%;
+    margin: auto;
+    animation: spin .8s linear infinite;
+}
+
+.loading p {
+    margin-top: 10px;
+    color: #697386;
+    font-size: 14px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* ================= ERROR ================= */
+
+.error-box {
+    background: #fff1f2;
+    color: #be123c;
+    border: 1px solid #fecdd3;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.error-box button {
+    margin-left: 10px;
+    border: none;
+    background: #be123c;
+    color: white;
+    padding: 7px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+
+/* ================= STATS ================= */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+.stat-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 13px;
+    padding: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: .2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, .06);
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 11px;
+    background: #eff6ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 21px;
+}
+
+.stat-card.high .stat-icon {
+    background: #fff1f2;
+}
+
+.stat-card.medium .stat-icon {
+    background: #fff7ed;
+}
+
+.stat-card.low .stat-icon {
+    background: #f0fdf4;
+}
+
+.stat-card p {
+    font-size: 13px;
+    color: #697386;
+}
+
+.stat-card h2 {
+    font-size: 27px;
+    margin: 4px 0;
+}
+
+.stat-card small {
+    color: #9aa2af;
+    font-size: 11px;
+}
+
+
+/* ================= ANALYTICS ================= */
+
+.analytics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    margin-bottom: 22px;
+}
+
+.panel,
+.reports-panel {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 13px;
+}
+
+.panel {
+    padding: 24px;
+}
+
+.panel-header {
+    margin-bottom: 22px;
+}
+
+.panel-header h3,
+.reports-header h3 {
+    font-size: 18px;
+}
+
+.panel-header p,
+.reports-header p {
+    color: #7a8494;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+
+/* ================= STATUS ================= */
+
+.status-bar {
+    display: flex;
+    width: 100%;
+    height: 12px;
+    background: #eef0f3;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 22px;
+}
+
+.status-bar div {
+    transition: width .5s ease;
+}
+
+#submittedBar {
+    background: #64748b;
+}
+
+#progressBar {
+    background: #f59e0b;
+}
+
+#resolvedBar {
+    background: #22c55e;
+}
+
+.status-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.status-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.status-row span {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+}
+
+.dot.submitted {
+    background: #64748b;
+}
+
+.dot.progress {
+    background: #f59e0b;
+}
+
+.dot.resolved {
+    background: #22c55e;
+}
+
+
+/* ================= ISSUE DISTRIBUTION ================= */
+
+.issue-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.issue-top {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.issue-top span {
+    color: #4b5563;
+}
+
+.progress-bg {
+    width: 100%;
+    height: 7px;
+    background: #eef0f3;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #2563eb;
+    border-radius: 20px;
+    transition: width .6s ease;
+}
+
+
+/* ================= REPORTS ================= */
+
+.reports-panel {
+    overflow: hidden;
+}
+
+.reports-header {
+    padding: 23px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.last-updated {
+    font-size: 12px;
+    color: #8a94a3;
+}
+
+.last-updated strong {
+    color: #374151;
+}
+
+
+/* ================= TABLE ================= */
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: #f8fafc;
+}
+
+th {
+    text-align: left;
+    padding: 14px 18px;
+    font-size: 12px;
+    color: #697386;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+td {
+    padding: 17px 18px;
+    border-top: 1px solid #edf0f3;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+tbody tr:hover {
+    background: #fafafa;
+}
+
+.report-id {
+    font-weight: 700;
+    color: #2563eb;
+}
+
+.location {
+    color: #697386;
+    font-size: 12px;
+}
+
+.location a {
+    display: inline-block;
+    margin-left: 7px;
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.location a:hover {
+    text-decoration: underline;
+}
+
+
+/* ================= BADGES ================= */
+
+.priority-badge,
+.status-badge {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.priority-high {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.priority-medium {
+    background: #fef3c7;
+    color: #a16207;
+}
+
+.priority-low {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+
+/* ================= STATUS SELECT ================= */
+
+.status-select {
+    border: 1px solid #d7dce3;
+    background: white;
+    padding: 8px 10px;
+    border-radius: 7px;
+    font-size: 12px;
+    cursor: pointer;
+    outline: none;
+}
+
+.status-select:focus {
+    border-color: #2563eb;
+}
+
+
+/* ================= EMPTY ================= */
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.empty-state div {
+    font-size: 40px;
+}
+
+.empty-state h3 {
+    margin-top: 10px;
+}
+
+.empty-state p {
+    color: #7a8494;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #8992a1;
+    font-size: 12px;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1000px) {
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .analytics-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 650px) {
+
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .header-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .dashboard {
+        width: 94%;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .reports-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+}
